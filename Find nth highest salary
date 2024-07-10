@@ -1,0 +1,32 @@
+Question: Find the Nth highest salary from an employee table
+
+
+Solution:
+
+select salary from
+(
+  select salary, dense_rank() over(order by salary desc) as rank from 
+  employees 
+  group by salary
+) a 
+where rank=3 ;
+
+
+
+Table creation script:
+
+CREATE TABLE IF NOT EXISTS employees
+(
+    emp_id integer NOT NULL,
+    emp_name varchar NOT NULL,
+    salary integer,
+    CONSTRAINT employees_pkey PRIMARY KEY (emp_id)
+)
+INSERT INTO employees(emp_id, emp_name, salary) VALUES
+(1, 'Vivek', 20000),
+(2, 'Arpit', 25000),
+(3, 'Shubham', 25000),
+(4, 'Rahul', 30000),
+(5, 'Mukul', 40000),
+(6, 'Ankit', 45000),
+(7, 'Himanshu', 45000);
