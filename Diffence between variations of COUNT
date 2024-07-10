@@ -1,0 +1,26 @@
+Question: Understanding the differences between COUNT(*), COUNT(1), COUNT('a'), COUNT(0), 
+            COUNT(column), and COUNT(DISTINCT column).
+
+
+Solution:
+
+select count (*), count (1), count('a'), count (0), 
+    count(department), count(distinct department) from employees_details;
+
+
+
+Table creation script:
+
+CREATE TABLE employees_details (
+    id INT,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary INT
+);
+
+INSERT INTO employees_details VALUES
+(1, 'Alice', 'HR', 50000),
+(2, 'Bob', 'IT', 60000),
+(3, 'Charlie', 'Finance', NULL),
+(4, 'David', 'IT', 55000),
+(5, 'Eve', NULL, 52000);
